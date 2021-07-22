@@ -111,6 +111,23 @@ public class MainActivity extends AppCompatActivity {
                             Log.d("ADebugTag", "Value: " + command);
                             btt.write(command.getBytes());
                         }
+                        else if (command == "move back"){
+                            //String resulte = result.toString();
+                            Log.d("ADebugTag", "Value: " + command);
+                            btt.write(command.getBytes());
+                        }
+
+                        else if (command == "move right"){
+                            //String resulte = result.toString();
+                            Log.d("ADebugTag", "Value: " + command);
+                            btt.write(command.getBytes());
+                        }
+
+                        else if (command == "move left"){
+                            //String resulte = result.toString();
+                            Log.d("ADebugTag", "Value: " + command);
+                            btt.write(command.getBytes());
+                        }
                     }
                 }
             }

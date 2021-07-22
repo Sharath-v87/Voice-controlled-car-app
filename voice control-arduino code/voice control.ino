@@ -34,28 +34,28 @@ void loop() {
    } 
 } 
 void processCommand(){ 
- char command = data[0]; 
- char inst = data[1]; 
- switch(command){ 
-   case 'm': 
-         if(inst == 'o'){ 
-           digitalWrite(LM1,HIGH);
-           digitalWrite(LM2, LOW); 
-           btm.println("Recieved"); 
-           Serial.println(data);
-         } 
-         break; 
-  //  case 'L': 
-  //        if(inst == 'Y'){ 
-  //          digitalWrite(LIGHT,HIGH); 
-  //          btm.println("Light: ON"); 
-  //        } 
-  //        else if(inst == 'N'){ 
-  //          digitalWrite(LIGHT,LOW); 
-  //          btm.println("Light: OFF"); 
-  //        } 
-  //  break; 
- } 
-         
-         
+  if(data[5] == 'f'){ 
+    digitalWrite(LM1, HIGH);
+    digitalWrite(LM2, LOW); 
+    btm.println("Recieved"); 
+    Serial.println(data);
+  }
+  else if(data[5] == 'b'){ 
+    digitalWrite(LM1, LOW);
+    digitalWrite(LM2, HIGH); 
+    btm.println("Recieved"); 
+    Serial.println(data);
+  }    
+  else if(data[5] == 'r'){ 
+    digitalWrite(LM1, HIGH);
+    digitalWrite(LM2, LOW); 
+    btm.println("Recieved"); 
+    Serial.println(data);
+  }    
+  else if(data[5] == 'l'){ 
+    digitalWrite(LM1, LOW);
+    digitalWrite(LM2, HIGH); 
+    btm.println("Recieved"); 
+    Serial.println(data);
+  }      
  } 
