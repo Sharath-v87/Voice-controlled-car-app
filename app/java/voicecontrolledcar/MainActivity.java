@@ -34,6 +34,9 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.UUID;
+import java.util.Arrays;
+
+import static java.sql.DriverManager.println;
 
 public class MainActivity extends AppCompatActivity {
     private TextView textview_first;
@@ -47,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     BluetoothDevice mmDevice;             //bluetooth stuff
     ConnectedThread btt = null;           //Our custom thread
     public Handler mHandler;              //this receives messages from thread
+    private static final String[] commands = {"move forward", "move back", "move left", "move right"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +77,10 @@ public class MainActivity extends AppCompatActivity {
                             .show();
                 }
 
-            }
+
+
+
+                }
         });
 
         bta = BluetoothAdapter.getDefaultAdapter();
@@ -90,14 +97,22 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_SPEECH_INPUT) {
             if (resultCode == RESULT_OK && data != null) {
                 ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                 textview_first.setText(Objects.requireNonNull(result).get(0));
                 initiateBluetoothProcess();
-
+                for(String command : commands){
+                    if(result.contains(command)){
+                        if(command == "move forward"){
+                            //String resulte = result.toString();
+                            Log.d("ADebugTag", "Value: " + command);
+                            btt.write(command.getBytes());
+                        }
+                    }
+                }
             }
         }
     }
