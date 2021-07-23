@@ -57,5 +57,11 @@ void processCommand(){
     digitalWrite(LM2, HIGH); 
     btm.println("Recieved"); 
     Serial.println(data);
+  }
+  else if(data[0] == 's'){ 
+    digitalWrite(LM1, LOW);
+    digitalWrite(LM2, HIGH); 
+    btm.println("Recieved"); 
+    Serial.println(data);
   }      
  } 
