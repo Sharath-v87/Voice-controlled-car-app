@@ -1,6 +1,8 @@
 #include <SoftwareSerial.h> 
 int LM1 = 7;
 int LM2 = 6;
+int RM1 = 9;
+int RM2 = 8;
 SoftwareSerial btm(2,3); // rx tx 
 int index = 0; 
 char data[20]; 
@@ -9,6 +11,9 @@ boolean flag = false;
 void setup() { 
  pinMode(LM1, OUTPUT);
  pinMode(LM2, OUTPUT);
+ pinMode(RM1, OUTPUT);
+ pinMode(RM2, OUTPUT);
+ //pinMode(ENA1, OUTPUT);
  //digitalWrite(RELAY,HIGH); 
  //digitalWrite(LIGHT,LOW); 
  btm.begin(9600);
@@ -36,32 +41,48 @@ void loop() {
 void processCommand(){ 
   if(data[5] == 'f'){ 
     digitalWrite(LM1, HIGH);
-    digitalWrite(LM2, LOW); 
+    digitalWrite(LM2, LOW);
+    digitalWrite(RM1, HIGH);
+    digitalWrite(RM2, LOW); 
+    //digitalWrite(ENA1, HIGH);
     btm.println("Recieved"); 
     Serial.println(data);
   }
   else if(data[5] == 'b'){ 
     digitalWrite(LM1, LOW);
-    digitalWrite(LM2, HIGH); 
+    digitalWrite(LM2, HIGH);
+    digitalWrite(RM1, LOW);
+    digitalWrite(RM2, HIGH); 
+    //digitalWrite(ENA1, HIGH);
     btm.println("Recieved"); 
     Serial.println(data);
   }    
   else if(data[5] == 'r'){ 
     digitalWrite(LM1, HIGH);
     digitalWrite(LM2, LOW); 
+    digitalWrite(RM1, LOW);
+    digitalWrite(RM2, HIGH); 
+   // digitalWrite(ENA1, HIGH);
     btm.println("Recieved"); 
     Serial.println(data);
   }    
   else if(data[5] == 'l'){ 
     digitalWrite(LM1, LOW);
     digitalWrite(LM2, HIGH); 
+    digitalWrite(RM1, HIGH);
+    digitalWrite(RM2, LOW);
+    //digitalWrite(ENA1, HIGH);
     btm.println("Recieved"); 
     Serial.println(data);
   }
-  else if(data[0] == 's'){ 
+  else if(data[5] == 'e'){ 
     digitalWrite(LM1, LOW);
-    digitalWrite(LM2, HIGH); 
+    digitalWrite(LM2, LOW);
+    digitalWrite(RM1, LOW);
+    digitalWrite(RM2, LOW); 
+    //digitalWrite(ENA1, HIGH);
     btm.println("Recieved"); 
     Serial.println(data);
-  }      
+  }
+  
  } 

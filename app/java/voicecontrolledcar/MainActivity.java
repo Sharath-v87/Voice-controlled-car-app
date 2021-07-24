@@ -132,7 +132,8 @@ public class MainActivity extends AppCompatActivity {
                         else if (command == "stop"){
                             //String resulte = result.toString();
                             Log.d("ADebugTag", "Value: " + command);
-                            btt.write(command.getBytes());
+                            String stp = "mstope";
+                            btt.write(stp.getBytes());
                         }
                     }
                 }
