@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textview_first;
     private Button audio_button;
     private static final int REQUEST_CODE_SPEECH_INPUT = 1;
-    public final static String MODULE_MAC = "FC:A8:9A:00:63:33";
+    public final static String MODULE_MAC = "FC:A8:9A:00:63:33"; //enter the mac address of your hc-05 here
     public final static int REQUEST_ENABLE_BT = 1;
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
     BluetoothAdapter bta;                 //bluetooth stuff
