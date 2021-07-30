@@ -1,8 +1,8 @@
 #include <SoftwareSerial.h> 
-int LM1 = 7;
-int LM2 = 6;
-int RM1 = 9;
-int RM2 = 8;
+int RM1 = 7;
+int RM2 = 6;
+int LM1 = 8;
+int LM2 = 9;
 SoftwareSerial btm(2,3); // rx tx 
 int index = 0; 
 char data[20]; 
@@ -13,9 +13,6 @@ void setup() {
  pinMode(LM2, OUTPUT);
  pinMode(RM1, OUTPUT);
  pinMode(RM2, OUTPUT);
- //pinMode(ENA1, OUTPUT);
- //digitalWrite(RELAY,HIGH); 
- //digitalWrite(LIGHT,LOW); 
  btm.begin(9600);
  Serial.begin(9600); 
 } 
@@ -53,7 +50,6 @@ void processCommand(){
     digitalWrite(LM2, HIGH);
     digitalWrite(RM1, LOW);
     digitalWrite(RM2, HIGH); 
-    //digitalWrite(ENA1, HIGH);
     btm.println("Recieved"); 
     Serial.println(data);
   }    
@@ -62,7 +58,6 @@ void processCommand(){
     digitalWrite(LM2, LOW); 
     digitalWrite(RM1, LOW);
     digitalWrite(RM2, HIGH); 
-   // digitalWrite(ENA1, HIGH);
     btm.println("Recieved"); 
     Serial.println(data);
   }    
@@ -71,7 +66,6 @@ void processCommand(){
     digitalWrite(LM2, HIGH); 
     digitalWrite(RM1, HIGH);
     digitalWrite(RM2, LOW);
-    //digitalWrite(ENA1, HIGH);
     btm.println("Recieved"); 
     Serial.println(data);
   }
@@ -80,7 +74,6 @@ void processCommand(){
     digitalWrite(LM2, LOW);
     digitalWrite(RM1, LOW);
     digitalWrite(RM2, LOW); 
-    //digitalWrite(ENA1, HIGH);
     btm.println("Recieved"); 
     Serial.println(data);
   }
